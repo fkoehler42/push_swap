@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 14:41:37 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/14 22:30:37 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/15 18:24:30 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 void	error(int err_code)
 {
-	if (err_code == 1)
-		ft_putstr_fd("Error : malloc failed\n", STDERR_FILENO);
+	if (err_code == 0)
+		ft_putstr_fd("Error : memory allocation failed\n", STDERR_FILENO);
+	else if (err_code == 1)
+		ft_putstr_fd("Error : illegal option\n", STDERR_FILENO);
 	else if (err_code == 2)
-		ft_putstr_fd("Error : An argument is not well formatted\n",
+		ft_putstr_fd("Error : An argument is invalid\n",
 					STDERR_FILENO);
 	else if (err_code == 3)
-		ft_putstr_fd("Error : An argument is too large.\n",
+		ft_putstr_fd("Error : An argument is too large\n",
 					STDERR_FILENO);
+	else if (err_code == 4)
+		ft_putstr_fd("Error : Two arguments are identical\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
@@ -41,5 +45,6 @@ int		main(int ac, char **av)
 	if ((ac - i) < 2)
 		return (0);
 	parse_args(&stack_a, i, ac, av);
+	sort_stack(&stack_a, &stack_b);
 	return (0);
 }

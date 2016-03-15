@@ -6,11 +6,25 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 15:11:45 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/14 22:07:02 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/15 15:50:02 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	check_duplicates(t_stack *stack)
+{
+	t_elem *tmp;
+
+	tmp = stack->top;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		if (stack->top->nb == tmp->nb)
+			error(4);
+	}
+	return (0);
+}
 
 static int	check_arg(char *arg)
 {
@@ -52,7 +66,7 @@ int			parse_flags(t_flag *flag, int ac, char **av)
 			else if (av[i][j] == 'v')
 				flag->v = 1;
 			else
-				error(2);
+				error(1);
 			j++;
 		}
 		i++;
@@ -81,6 +95,7 @@ int			parse_args(t_stack *stack, int i, int ac, char **av)
 		}
 		nb = check_arg(av[ac]);
 		add_elem(stack, nb);
+		check_duplicates(stack);
 	}
 	return (0);
 }

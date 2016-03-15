@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle.c                                           :+:      :+:    :+:   */
+/*   store.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/15 17:32:01 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 19:02:03 by fkoehler         ###   ########.fr       */
+/*   Created: 2016/03/14 16:29:35 by fkoehler          #+#    #+#             */
+/*   Updated: 2016/03/15 17:31:56 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	issorted_stack(t_stack *a, t_stack *b)
+int		add_elem(t_stack *stack, int nb)
 {
-	t_elem *tmp;
+	t_elem	*new;
 
-	tmp = a->top;
-	if (b->top)
-		return (-1);
-	while (tmp->next)
+	if (!(new = (t_elem *)malloc(sizeof(*new))))
+		error(0);
+	new->nb = nb;
+	if (!stack->bot)
 	{
-		if (tmp->nb > tmp->next->nb)
-			return (-1);
-		tmp = tmp->next;
+		stack->bot = new;
+		stack->top = new;
+		new->prev = NULL;
+		new->next = NULL;
 	}
-	return (0);
-}
-
-int			sort_stack(t_stack *a, t_stack *b)
-{
-	if (issorted_stack(a, b) < 0)
-		put_stacks(a, b);
-	rotate(a);
-	put_stacks(a, b);
+	else
+	{
+		stack->top->prev = new;
+		new->next = stack->top;
+		new->prev = NULL;
+		stack->top = new;
+	}
+	stack->nb_elem++;
 	return (0);
 }
