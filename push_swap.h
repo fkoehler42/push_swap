@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:10:22 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 19:01:32 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/15 21:02:18 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int					add_elem(t_stack *stack, int nb);
 
 int					sort_stack(t_stack *a, t_stack *b);
 int					push(t_stack *a, t_stack *b);
-int					rotate(t_stack *a);
+int					rotate(t_stack *a, int reverse);
+int					swap(t_stack *a);
 void				put_stacks(t_stack *a, t_stack *b);
 
 #endif

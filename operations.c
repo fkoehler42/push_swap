@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:53:05 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 19:11:19 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/15 22:03:38 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int		push(t_stack *a, t_stack *b)
 
 	if (!(elem = a->top))
 		return (-1);
-	a->top = a->top->next;
-	if (!(a->top->next))
+	if (!(a->top = a->top->next))
 		a->bot = a->top;
-	a->top->prev = NULL;
+	else
+		a->top->prev = NULL;
 	if (!b->top)
 	{
 		b->top = elem;
@@ -41,17 +41,43 @@ int		push(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int		rotate(t_stack *a)
+int		rotate(t_stack *a, int reverse)
 {
 	t_elem *elem;
 
 	if (a->nb_elem < 2)
 		return (-1);
-	elem = a->top;
-	a->top = a->top->next;
-	a->top->prev = NULL;
-	elem->prev = a->bot;
-	a->bot = elem;
-	elem->next = NULL;
+	if (!reverse)
+	{
+		elem = a->top;
+		a->bot->next = elem;
+		a->top = a->top->next;
+		a->top->prev = NULL;
+		elem->prev = a->bot;
+		a->bot = elem;
+		elem->next = NULL;
+	}
+	else
+	{
+		elem = a->bot;
+		a->top->prev = elem;
+		a->bot = a->bot->prev;
+		a->bot->next = NULL;
+		elem->next = a->top;
+		a->top = elem;
+		elem->prev = NULL;
+	}
+	return (0);
+}
+
+int		swap(t_stack *a)
+{
+	int	tmp;
+
+	if (a->nb_elem < 2)
+		return (-1);
+	tmp = a->top->nb;
+	a->top->nb = a->top->next->nb;
+	a->top->next->nb = tmp;
 	return (0);
 }
