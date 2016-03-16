@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:53:05 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 22:03:38 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/16 16:03:21 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		push(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int		rotate(t_stack *a, int reverse)
+int		rotate(t_stack *stack, int reverse)
 {
 	t_elem *elem;
 
@@ -49,35 +49,35 @@ int		rotate(t_stack *a, int reverse)
 		return (-1);
 	if (!reverse)
 	{
-		elem = a->top;
-		a->bot->next = elem;
-		a->top = a->top->next;
-		a->top->prev = NULL;
-		elem->prev = a->bot;
-		a->bot = elem;
+		elem = stack->top;
+		stack->bot->next = elem;
+		stack->top = stack->top->next;
+		stack->top->prev = NULL;
+		elem->prev = stack->bot;
+		stack->bot = elem;
 		elem->next = NULL;
 	}
 	else
 	{
-		elem = a->bot;
-		a->top->prev = elem;
-		a->bot = a->bot->prev;
-		a->bot->next = NULL;
-		elem->next = a->top;
-		a->top = elem;
+		elem = stack->bot;
+		stack->top->prev = elem;
+		stack->bot = stack->bot->prev;
+		stack->bot->next = NULL;
+		elem->next = stack->top;
+		stack->top = elem;
 		elem->prev = NULL;
 	}
 	return (0);
 }
 
-int		swap(t_stack *a)
+int		swap(t_stack *stack)
 {
 	int	tmp;
 
-	if (a->nb_elem < 2)
+	if (stack->nb_elem < 2)
 		return (-1);
-	tmp = a->top->nb;
-	a->top->nb = a->top->next->nb;
-	a->top->next->nb = tmp;
+	tmp = stack->top->nb;
+	stack->top->nb = stack->top->next->nb;
+	stack->top->next->nb = tmp;
 	return (0);
 }

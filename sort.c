@@ -1,47 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle.c                                           :+:      :+:    :+:   */
+/*   sort.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:32:01 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/16 16:35:05 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/16 16:21:28 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-static int	issorted_stack(t_stack *a, t_stack *b)
-{
-	t_elem *tmp;
 
+static int	search_min(t_stack *a)
+{
+	int		i;
+	int		min;
+	t_elem	*tmp;
+
+	i = 0;
+	min = 2147483647;
 	tmp = a->top;
-	if (b->top)
-		return (-1);
-	while (tmp->next)
+	while (tmp)
 	{
-		if (tmp->nb > tmp->next->nb)
-			return (-1);
+		if (tmp->nb < min)
+			min = tmp->nb;
 		tmp = tmp->next;
 	}
-	return (0);
+	tmp = a->top;
+	while (tmp->nb > min && ++i)
+		tmp = tmp->next;
+	return (i);
 }
-*/
 
-int			sort_stack(t_flag *flag, t_stack *a, t_stack *b)
+int			push_all(t_stack *a, t_stack *b, char *op_name)
 {
-	int		op;
+	int	op;
 
 	op = 0;
 	while (a->nb_elem && ++op)
 	{
-		op += rotate_to_min(a);
 		push(a, b);
-		ft_putstr("pb ");
+		ft_putstr(op_name);
 	}
-	op += push_all(b, a, "pa ");
-	ft_putchar('\n');
-	ft_printf("%d operations\n", op);
-	return (0);
+	return (op);
+}
+
+int			rotate_to_min(t_stack *stack)
+{
+	int		i;
+	int		op;
+
+	i = 0;
+	op = 0;
+	if ((i = search_min(stack)) <= (stack->nb_elem / 2))
+	{
+		while (i-- && ++op)
+		{
+			rotate(stack, 0);
+			ft_putstr("ra ");
+		}
+	}
+	else
+	{
+		while (i++ < stack->nb_elem && ++op)
+		{
+			rotate(stack, 1);
+			ft_putstr("rra ");
+		}
+	}
+	return (op);
 }

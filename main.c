@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 14:41:37 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 18:24:30 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/16 15:55:50 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int		main(int ac, char **av)
 	if ((ac - i) < 2)
 		return (0);
 	parse_args(&stack_a, i, ac, av);
-	sort_stack(&stack_a, &stack_b);
+	sort_stack(&flag, &stack_a, &stack_b);
 	return (0);
 }

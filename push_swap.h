@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:10:22 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 21:02:18 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/16 16:22:18 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ int					parse_flags(t_flag *flag, int ac, char **av);
 int					parse_args(t_stack *stack, int i, int ac, char **av);
 int					add_elem(t_stack *stack, int nb);
 
-int					sort_stack(t_stack *a, t_stack *b);
+int					sort_stack(t_flag *flag, t_stack *a, t_stack *b);
 int					push(t_stack *a, t_stack *b);
-int					rotate(t_stack *a, int reverse);
-int					swap(t_stack *a);
+int					rotate(t_stack *stack, int reverse);
+int					swap(t_stack *stack);
+int					rotate_to_min(t_stack *stack);
+int					push_all(t_stack *a, t_stack *b, char *op_name);
 void				put_stacks(t_stack *a, t_stack *b);
 
 #endif
