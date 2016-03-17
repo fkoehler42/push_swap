@@ -6,11 +6,11 @@
 #    By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/09 09:46:03 by fkoehler          #+#    #+#              #
-#    Updated: 2016/03/16 15:44:11 by fkoehler         ###   ########.fr        #
+#    Updated: 2016/03/17 11:58:36 by fkoehler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = display.c handle.c init.c main.c operations.c parse.c store.c
+SRC = display.c handle.c init.c main.c operations.c parse.c sort.c store.c
 
 NAME = push_swap
 

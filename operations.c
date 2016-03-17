@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:53:05 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/16 16:03:21 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 11:41:22 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		rotate(t_stack *stack, int reverse)
 {
 	t_elem *elem;
 
-	if (a->nb_elem < 2)
+	if (stack->nb_elem < 2)
 		return (-1);
 	if (!reverse)
 	{

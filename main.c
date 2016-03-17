@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 14:41:37 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/16 15:55:50 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 13:41:56 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,23 @@ void	error(int err_code)
 int		main(int ac, char **av)
 {
 	int		i;
+	int		op;
 	t_flag	flag;
 	t_stack	stack_a;
 	t_stack	stack_b;
 
 	if (ac < 2)
 		return (0);
-	init_flag(&flag);
 	init_stack(&stack_a);
 	init_stack(&stack_b);
+	init_flag(&flag, &stack_a, &stack_b);
 	i = (parse_flags(&flag, ac, av));
 	if ((ac - i) < 2)
 		return (0);
 	parse_args(&stack_a, i, ac, av);
-	sort_stack(&flag, &stack_a, &stack_b);
+	if (flag.v)
+		put_stacks(&flag);
+	op = sort_stack(&flag);
+	put_total_op(&flag, op);
 	return (0);
 }

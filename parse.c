@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 15:11:45 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 15:50:02 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 12:50:55 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int			parse_flags(t_flag *flag, int ac, char **av)
 				flag->c = 1;
 			else if (av[i][j] == 'v')
 				flag->v = 1;
+			else if (av[i][j] == 'o')
+				flag->o = 1;
 			else
 				error(1);
 			j++;
