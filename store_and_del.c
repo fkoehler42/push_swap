@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   store.c                                           :+:      :+:    :+:   */
+/*   store_and_del.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 16:29:35 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/15 17:31:56 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 20:34:31 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		delete_stacks(t_stack *a, t_stack *b)
+{
+	t_elem *tmp;
+
+	tmp = a->top;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		free(tmp->prev);
+	}
+	if (tmp)
+		free(tmp);
+	if (b->nb_elem)
+	{
+		tmp = b->top;
+		while (tmp->next)
+		{
+			tmp = tmp->next;
+			free(tmp->prev);
+		}
+		if (tmp)
+			free(tmp);
+	}
+	return (0);
+}
 
 int		add_elem(t_stack *stack, int nb)
 {

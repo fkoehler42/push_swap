@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                           :+:      :+:    :+:   */
+/*   sort1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:32:01 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 12:49:06 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 14:48:28 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,20 @@ int			rotate_to_min(t_flag *flag, t_stack *stack)
 			put_op(flag, "rra ");
 		}
 	}
+	return (op);
+}
+
+int			sorting_algo1(t_flag *flag)
+{
+	int		op;
+
+	op = 0;
+	while ((flag->stack_a->nb_elem > 1) && ++op)
+	{
+		op += rotate_to_min(flag, flag->stack_a);
+		push(flag->stack_a, flag->stack_b);
+		put_op(flag, "pb ");
+	}
+	op += push_all(flag, 'a');
 	return (op);
 }

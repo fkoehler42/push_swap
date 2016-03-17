@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 15:26:33 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 13:03:13 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 18:18:10 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	put_total_op(t_flag *flag, int nb_op)
 {
-	if (flag->o && flag->v)
-		ft_printf("%d operations\n", nb_op);
+	if (flag->i || (flag->o && flag->v))
+		ft_printf("%d operation(s)\n", nb_op);
 	else if (flag->o)
-		ft_printf("\n%d operations\n", nb_op);
+		ft_printf("\n%d operation(s)\n", nb_op);
 	else if (!flag->v)
 		ft_putchar('\n');
 }

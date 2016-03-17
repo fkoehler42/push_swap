@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 14:41:37 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 13:41:56 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/17 20:19:51 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,13 @@ int		main(int ac, char **av)
 	if ((ac - i) < 2)
 		return (0);
 	parse_args(&stack_a, i, ac, av);
-	if (flag.v)
-		put_stacks(&flag);
-	op = sort_stack(&flag);
-	put_total_op(&flag, op);
+	if (flag.i)
+		interactive_mode(&flag);
+	else
+	{
+		op = sort_stack(&flag);
+		put_total_op(&flag, op);
+	}
+	delete_stacks(&stack_a, &stack_b);
 	return (0);
 }
