@@ -6,12 +6,12 @@
 #    By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/09 09:46:03 by fkoehler          #+#    #+#              #
-#    Updated: 2016/03/17 20:29:09 by fkoehler         ###   ########.fr        #
+#    Updated: 2016/03/19 23:06:00 by fkoehler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = display.c handle.c init.c interactive.c main.c operations.c parse.c \
-	  sort1.c sort2.c store_and_del.c
+	  sort1.c sort2.c sort3.c store_and_del.c
 
 NAME = push_swap
 

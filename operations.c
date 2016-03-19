@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:53:05 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 11:41:22 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/19 23:25:13 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		push(t_stack *a, t_stack *b)
 	}
 	a->nb_elem--;
 	b->nb_elem++;
-	return (0);
+	return (1);
 }
 
 int		rotate(t_stack *stack, int reverse)
@@ -67,7 +67,7 @@ int		rotate(t_stack *stack, int reverse)
 		stack->top = elem;
 		elem->prev = NULL;
 	}
-	return (0);
+	return (1);
 }
 
 int		swap(t_stack *stack)
@@ -79,5 +79,5 @@ int		swap(t_stack *stack)
 	tmp = stack->top->nb;
 	stack->top->nb = stack->top->next->nb;
 	stack->top->next->nb = tmp;
-	return (0);
+	return (1);
 }
