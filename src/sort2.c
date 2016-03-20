@@ -1,70 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort1.c                                           :+:      :+:    :+:   */
+/*   sort2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 17:32:01 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 14:48:28 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/20 20:05:16 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	search_min(t_stack *stack)
+int			issorted_stack(t_flag *flag)
 {
-	int		i;
-	int		min;
-	t_elem	*tmp;
+	t_elem *tmp;
 
-	i = 0;
-	min = 2147483647;
-	tmp = stack->top;
-	while (tmp)
+	tmp = flag->stack_a->top;
+	if (flag->stack_b->nb_elem)
+		return (-1);
+	while (tmp->next)
 	{
-		if (tmp->nb < min)
-			min = tmp->nb;
+		if (tmp->nb > tmp->next->nb)
+			return (-1);
 		tmp = tmp->next;
 	}
-	tmp = stack->top;
-	while (tmp->nb > min && ++i)
-		tmp = tmp->next;
-	return (i);
+	return (0);
 }
 
-int			push_all(t_flag *flag, char to_push)
+static int	rotate_to_swap(t_flag *flag, t_stack *stack)
 {
+	int	i;
 	int	op;
 
-	op = 0;
-	if (to_push == 'a')
-	{
-		while (flag->stack_b->nb_elem && ++op)
-		{
-			push(flag->stack_b, flag->stack_a);
-			put_op(flag, "pa ");
-		}
-	}
-	else if (to_push == 'b')
-	{
-		while (flag->stack_a->nb_elem && ++op)
-		{
-			push(flag->stack_a, flag->stack_b);
-			put_op(flag, "pb ");
-		}
-	}
-	return (op);
-}
-
-int			rotate_to_min(t_flag *flag, t_stack *stack)
-{
-	int		i;
-	int		op;
-
 	i = 0;
 	op = 0;
-	if ((i = search_min(stack)) <= (stack->nb_elem / 2))
+	if ((i = search_not_sorted_elem(stack)) <= (stack->nb_elem / 2))
 	{
 		while (i-- && ++op)
 		{
@@ -83,17 +54,17 @@ int			rotate_to_min(t_flag *flag, t_stack *stack)
 	return (op);
 }
 
-int			sorting_algo1(t_flag *flag)
+int			sorting_algo2(t_flag *flag)
 {
 	int		op;
 
 	op = 0;
-	while ((flag->stack_a->nb_elem > 1) && ++op)
+	while (issorted_stack(flag) < 0 && ++op)
 	{
+		op += rotate_to_swap(flag, flag->stack_a);
+		swap(flag->stack_a);
+		put_op(flag, "sa ");
 		op += rotate_to_min(flag, flag->stack_a);
-		push(flag->stack_a, flag->stack_b);
-		put_op(flag, "pb ");
 	}
-	op += push_all(flag, 'a');
 	return (op);
 }

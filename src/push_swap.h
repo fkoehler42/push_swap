@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:10:22 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/19 23:31:19 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/20 19:59:36 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ int					issorted_stack(t_flag *flag);
 int					sort_stack(t_flag *flag);
 int					sorting_algo1(t_flag *flag);
 int					sorting_algo2(t_flag *flag);
-int					sorting_algo3(t_flag *flag);
 int					rotate_to_min(t_flag *flag, t_stack *stack);
-int					rotate_to_max(t_flag *flag, t_stack *stack);
 int					push_all(t_flag *flag, char to_push);
 int					search_not_sorted_elem(t_stack *stack);
 

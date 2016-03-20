@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 15:11:45 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 16:46:42 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/20 20:19:55 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ int			parse_flags(t_flag *flag, int ac, char **av)
 	while (i < ac && av[i][0] == '-')
 	{
 		j = 1;
-		if (!av[i][j])
-			error(2);
-		else if (ft_isdigit(av[i][j]))
+		av[i][j] ? 0 : error(2);
+		if (ft_isdigit(av[i][j]))
 			return (i - 1);
 		while (av[i][j])
 		{

@@ -6,11 +6,11 @@
 #    By: fkoehler <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 18:34:40 by fkoehler          #+#    #+#              #
-#    Updated: 2016/03/14 21:34:02 by fkoehler         ###   ########.fr        #
+#    Updated: 2016/03/20 20:25:02 by fkoehler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-vpath %.c ./ ./ft_printf
+vpath %.c ./src ./ft_printf
 
 SRC = ft_atoi.c \
 ft_atol.c \

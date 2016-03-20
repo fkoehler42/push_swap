@@ -6,7 +6,7 @@
 /*   By: fkoehler <fkoehler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:47:27 by fkoehler          #+#    #+#             */
-/*   Updated: 2016/03/17 20:58:08 by fkoehler         ###   ########.fr       */
+/*   Updated: 2016/03/20 20:15:54 by fkoehler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	handle_input1(t_flag *flag, char *input)
 	}
 	return (1);
 }
+
 static int	handle_input(t_flag *flag, char *input)
 {
 	if ((ft_strcmp(input, "sa") == 0) || (ft_strcmp(input, "SA") == 0))
